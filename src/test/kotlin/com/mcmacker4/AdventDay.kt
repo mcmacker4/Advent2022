@@ -4,13 +4,9 @@ import java.io.BufferedReader
 
 abstract class AdventDay(private val day: Int) {
 
-    fun getInput(): String {
-        return getInputReader().readText()
-    }
+    fun getInput() = getInputReader().readText()
 
-    fun getInputLines(): List<String> {
-        return getInputReader().readLines()
-    }
+    fun getInputLines() = getInputReader().readLines()
 
     private fun getInputReader(): BufferedReader {
         return javaClass.getResourceAsStream("/inputs/day$day")?.bufferedReader()
