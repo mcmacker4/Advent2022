@@ -26,20 +26,10 @@ class Day5 : AdventDay(5) {
         return stacks
     }
 
-    data class Move(val from: Int, val to: Int, val count: Int) {
-        companion object {
-            fun parse(line: String): Move {
-                val parts = line.split(" ")
-                return Move(parts[3].toInt() - 1, parts[5].toInt() - 1, parts[1].toInt())
-            }
-        }
-    }
+    data class Move(val from: Int, val to: Int, val count: Int)
 
-    private fun executeMove9000(move: Move, stacks: List<LinkedList<Char>>) {
-        for (i in 0 until move.count) {
-            val crate = stacks[move.from].pop()
-            stacks[move.to].push(crate)
-        }
+    private fun parseMove(line: String) = line.split(" ").let {
+        Move(it[3].toInt() - 1, it[5].toInt() - 1, it[1].toInt())
     }
 
     private fun resolveProblem(moveExecutor: (Move, List<LinkedList<Char>>) -> Unit): String {
@@ -53,12 +43,18 @@ class Day5 : AdventDay(5) {
 
         val stacks: List<LinkedList<Char>> = parseHeader(stackMarkers, stackLines)
 
-        movesText.map(Move::parse).forEach {
+        movesText.map(::parseMove).forEach {
             moveExecutor(it, stacks)
         }
 
         return stacks.map(LinkedList<Char>::peek).joinToString("", transform = Char::toString)
+    }
 
+    private fun executeMove9000(move: Move, stacks: List<LinkedList<Char>>) {
+        for (i in 0 until move.count) {
+            val crate = stacks[move.from].pop()
+            stacks[move.to].push(crate)
+        }
     }
 
     @Test
