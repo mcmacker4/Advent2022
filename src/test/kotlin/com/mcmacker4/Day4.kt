@@ -15,9 +15,8 @@ class Day4 : AdventDay(4) {
         return IntRange(values[0], values[1])
     }
 
-    private fun isFullyContained(big: IntRange, small: IntRange): Boolean {
-        return big.first <= small.first && big.last >= small.last
-    }
+    private fun isFullyContained(big: IntRange, small: IntRange) =
+        big.first <= small.first && big.last >= small.last
 
     @Test
     fun part1() {
