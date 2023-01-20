@@ -1,5 +1,6 @@
 package com.mcmacker4
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class Day1 : AdventDay(1) {
@@ -16,6 +17,7 @@ class Day1 : AdventDay(1) {
     fun part1() {
         val calories = groupedCalories().max()
         log("Part 1: $calories calories")
+        assertEquals(67450, calories)
     }
 
     @Test
@@ -25,6 +27,7 @@ class Day1 : AdventDay(1) {
             .subList(0, 3)
             .sum()
         log("Part 2: $calories calories")
+        assertEquals(199357, calories)
     }
 
 }

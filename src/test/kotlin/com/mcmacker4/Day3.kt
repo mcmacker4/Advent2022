@@ -1,5 +1,6 @@
 package com.mcmacker4
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class Day3 : AdventDay(3) {
@@ -15,6 +16,7 @@ class Day3 : AdventDay(3) {
             .map { it.first.intersect(it.second).first() }
             .sumOf { priority[it]!! }
         log("Part 1: Priority $score")
+        assertEquals(7691, score)
     }
 
     @Test
@@ -26,6 +28,7 @@ class Day3 : AdventDay(3) {
             .map(::findCommonItem)
             .sumOf { priority[it]!! }
         log("Part 2: Priority $score")
+        assertEquals(2508, score)
     }
 
     private fun findCommonItem(elves: List<String>): Char {

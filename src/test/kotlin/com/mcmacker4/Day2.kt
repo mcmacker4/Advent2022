@@ -1,5 +1,6 @@
 package com.mcmacker4
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class Day2 : AdventDay(2) {
@@ -45,6 +46,7 @@ class Day2 : AdventDay(2) {
     fun part1() {
         val score = getInputLines().map { it.split(" ").map(Hand::of) }.sumOf(::score)
         log("Part 1: $score points")
+        assertEquals(13009, score)
     }
 
     private fun calculateRound(left: Hand, outcome: String): List<Hand> {
@@ -63,6 +65,7 @@ class Day2 : AdventDay(2) {
             .map(::score)
             .sum()
         log("Part 2: $score points")
+        assertEquals(10398, score)
     }
 
 }
