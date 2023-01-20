@@ -10,14 +10,11 @@ class Day2 : AdventDay(2) {
         SCISSORS(3);
 
         companion object {
-            fun of(value: String): Hand {
-                if (value == "A" || value == "X")
-                    return ROCK
-                if (value == "B" || value == "Y")
-                    return PAPER
-                if (value == "C" || value == "Z")
-                    return SCISSORS
-                throw Exception("'$value' is not a Hand")
+            fun of(value: String) = when (value) {
+                "A", "X" -> ROCK
+                "B", "Y" -> PAPER
+                "C", "Z" -> SCISSORS
+                else -> throw Exception("'$value' is not a valid Hand")
             }
         }
     }
