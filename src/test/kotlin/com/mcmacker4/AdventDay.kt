@@ -17,4 +17,7 @@ abstract class AdventDay(private val day: Int) {
         println("[Day $day] $text")
     }
 
+    fun String.green() = "\u001b[92;1m${this}\u001b[0m"
+    fun String.red() = "\u001b[91m${this}\u001b[0m"
+
 }
